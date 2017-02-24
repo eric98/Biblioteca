@@ -284,4 +284,46 @@ public class Cadenes {
     
     }
 
+    //Exercici 20
+    //Primera versió, vista a classe, utilitzant el mètode contains del Strings
+    public static String reemplassaMultiplesCaracters(String text, char canvi, char buscat, char... buscats){
+        
+        if(text==null || text.isEmpty()) return text;
+        if(buscats.length==0) return reemplassaCaracters(text, buscat, canvi); 
+        
+        String resultat="";
+        String carsBuscats=""+buscat;
+        for (int i = 0; i < buscats.length; i++) {
+            carsBuscats += buscats[i];
+            
+        }
+        
+        for (int i = 0; i < text.length(); i++) {
+            if(carsBuscats.contains(String.valueOf(text.charAt(i)))) resultat+=canvi;
+            else resultat+=text.charAt(i);
+        }
+        return resultat;
+    
+    }
+    
+    //Segona versió, comentada a classe, sense usar contains, mirant directament a l'array de paràmetres variables
+    public static String reemplassaMultiplesCaractersV2(String text, char canvi, char buscat, char... buscats){
+        
+        if(text==null || text.isEmpty()) return text;
+        if(buscats.length==0) return reemplassaCaracters(text, buscat, canvi); 
+        
+        String resultat="";        
+        
+        for (int i = 0; i < text.length(); i++) {
+            //Per cada caràcter de text mirem si és igual al buscat o a algun dels buscats. Gràcies al booleà trobat pararem de buscar en quant el trobem
+            boolean trobat=(text.charAt(i)==buscat);
+            for (int j = 0; !trobat && j < buscats.length; j++) {
+                trobat=(text.charAt(i)==buscats[j]);                
+            }
+            if(trobat) resultat+=canvi;
+            else resultat+=text.charAt(i);
+        }
+        return resultat;
+    
+    }
 }
