@@ -292,6 +292,9 @@ public class Cadenes {
         if(buscats.length==0) return reemplassaCaracters(text, buscat, canvi); 
         
         String resultat="";
+        
+        //Creem un String que contindrà el caràcter buscat més els buscats. D'esta forma usarem el mètode contains
+        //per mirar si el caràcter actual del text és un dels buscats (igual com feiem quan miràvem si un caràcter era un separador)
         String carsBuscats=""+buscat;
         for (int i = 0; i < buscats.length; i++) {
             carsBuscats += buscats[i];
