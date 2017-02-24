@@ -231,6 +231,7 @@ public class Cadenes {
         //}
     }
     
+    //Exercici 16
     /**
      *
      * @param primer
@@ -269,7 +270,8 @@ public class Cadenes {
         return resultat;
     }
     
-    public static String reemplassaCaracter(String text, char buscat, char canvi){
+    //Exercici 19
+    public static String reemplassaCaracters(String text, char buscat, char canvi){
         
         if(text==null || text.isEmpty()) return text;
     
