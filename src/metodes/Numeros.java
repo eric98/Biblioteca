@@ -98,8 +98,8 @@ public class Numeros {
         //variables locals
         int resultat=0;             //per calcular el resultat
         int factor=1;               //per tenir el factor potèmcia de 10 necessari per cada dígit. Comença valent 1 i continua en 10, 100, 1000, ...
-        boolean negatiu=(num[0]<0); //si el núm ero representat és negatiu el passarem a positiu i al final li canviarem el signe al resultat
-        
+        boolean negatiu=(num[0]<0); //si el número representat és negatiu el passarem a positiu i al final li canviarem el signe al resultat
+
         //Si és negatiu lo passem a positiu per operar correctament en ell
         if(negatiu) num[0]*=-1;
         
@@ -222,5 +222,129 @@ public class Numeros {
         return null;
         
     }
+    
+    //Exercici 32
+    public static int fibonacci(int n){
+        if(n<0) return -1;
+        if(n==0) return 0;
+        if(n==1) return 1;
+        return fibonacci(n-1)+fibonacci(n-2);
+    
+    }
+    
+    //Exercici 29
+    public static int mcdRecursiu(int a, int b){
+        //Si a o b són negatius els passem a positius
+        a=(a<0?a*-1:a);
+        b=(b<0?b*-1:b);
+        if(a==0 || b==0) return a+b;
+        if(a==b) return a;
+        if(a<b) return mcdRecursiu(a,b-a);
+        //Si arribem aquí segur que a>b
+        return mcdRecursiu(a-b,b);
+    }
    
+    //Exercici 30
+    public static int sumaNaturals(int n){
+        if(n<0) return -1;
+        if(n==0) return 0;
+        return n+sumaNaturals(n-1);
+    }
+    
+    public static int factorial(int n){
+        if(n<0) return -1;
+        int fact=1;
+        while(n>1) fact*=n--;
+        return fact;
+    }
+
+    public static int factorialRecursiu(int n){
+        if(n<0) return -1;
+        if(n==0) return 1;
+        return n*factorialRecursiu(n-1);
+    }
+    
+    public static int nombreCombinatori(int n, int m){
+        if(n<=m || n<0 || m<0) return -1;
+        
+        return factorial(n)/(factorial(m)*factorial(n-m));
+    
+    }
+    
+    //Exercici 25
+    public static int longitudNumero(int n){
+        
+        if(n==0) return 1;
+        
+        int compt=0;
+        
+        while(n!=0){
+            n/=10;
+            compt++;
+        }
+        
+        return compt;        
+    }
+
+    //Exercici 26 v1
+    public static int revesNumerov1(int n){
+        
+        if(longitudNumero(n)==1) return n;
+        
+        int suma=0;
+        int elevat=longitudNumero(n)-1;
+        
+        while(n!=0){
+            
+            suma+=(n%10)*Math.pow(10, elevat);
+            elevat--;
+            n/=10;      //    n=n/10
+            
+        }
+        
+        return suma;        
+    }
+
+    //Exercici 26 v2
+    public static int[] girarVector(int[] vector){
+        if(vector==null) return null;
+        
+        //Per saber si el número és negatiu i canviar el signe
+        boolean negatiu=(vector[0]<0);
+        if(negatiu) vector[0]*=-1;
+        
+        //Uso 2 índexos per intercanviar parelles de números
+        int i=0, j=vector.length-1;
+        //L'índex que va de dreta a esquerra el situo al primer valor no 0
+        for(;vector[j]==0;j--);
+        
+        //El vector resultat pot ser més menut que el paràmetre en el cas de 
+        //que este últim tingue 0s a la dreta
+        int[] resultat=new int[j+1];
+        
+        //Recorrem el vector en 2 índexos intercanviant parelles de valors
+        while(i<=j){
+            resultat[i] = vector[j];
+            resultat[j] = vector[i];
+            i++;
+            j--;
+        }
+        
+        //Si el vector era negatiu el tornem a negatiu, igual que el resultat
+        if(negatiu) {
+            resultat[0]*=-1;
+            vector[0]*=-1;
+        }
+        return resultat;
+    }
+    
+    public static int revesNumerov2(int n){
+        
+        if(longitudNumero(n)==1) return n;
+        
+        int[] vector=vectorDigits(n);
+        vector=girarVector(vector);
+        return numVector(vector);
+    }
+
 }
