@@ -45,6 +45,12 @@ public class Dates {
         
         //Si la data no és correcta retornem null i acabem
         if(!dataCorrecta(dia,mes,any)) return null;
+        
+        //Nota: el papa Gregorio XIII, asesorado por el astrónomo jesuita 
+        //Christopher Clavius, el 24 de febrero de 1582 promulgó la bula Inter 
+        //Gravissimas, en la que establecía que tras el jueves 4 de octubre de 
+        //1582 seguiría el viernes 15 de octubre de 1582.
+        if(dia==4 && mes==10 && any==1582) return new int[]{15, mes, any};
 
         //Si podem sumar un dia retornem la data, sinó estavem a final de mes
         if(dataCorrecta(dia+1,mes,any)) return new int[]{dia+1, mes, any};

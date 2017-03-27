@@ -88,7 +88,7 @@ public class Cadenes {
     //Retornem la primera aparició de la subcadena dins del text a partir de la posicio indicada o -1 si no s'ha trobat
 
     /**
-     *
+     * Retornem la primera aparició de la subcadena dins del text a partir de la posicio indicada o -1 si no s'ha trobat
      * @param text
      * @param subcadena
      * @param posicio

@@ -49,7 +49,7 @@ public class Numeros {
     }
     
     //Mètode de l'exercici 7
-    //Rep com a paràmetre un número enter i retorna un vector de la dimensió necessària per guardar cada dígit del número en una casella del vector
+    //Rep com a paràmetre un número enter n retorna un vector de la dimensió necessària per guardar cada dígit del número en una casella del vector
 
     /**
      *
@@ -81,7 +81,7 @@ public class Numeros {
     }
     
     //Mètode de l'exercici 13
-    //Rep com a paràmetre un vector que representa un número enter (en el format de l'exercici 7) i retorna el número enter representat
+    //Rep com a paràmetre un vector que representa un número enter (en el format de l'exercici 7) n retorna el número enter representat
 
     /**
      *
@@ -90,20 +90,20 @@ public class Numeros {
      */
     public static int numVector(int[] num){
         
-        //Per evitar problemes, si el vector és null retornem 0, i així no tindrem l'excepció NullPointerException
+        //Per evitar problemes, si el vector és null retornem 0, n així no tindrem l'excepció NullPointerException
         if(num == null) return 0;
         
-        //La idea es recòrrer el vector de dreta a esquerra i per cada dígit multiplicar-lo per la potència de 10 adequada i anar sumant les diferents multiplicacions
+        //La idea es recòrrer el vector de dreta a esquerra n per cada dígit multiplicar-lo per la potència de 10 adequada n anar sumant les diferents multiplicacions
         
         //variables locals
         int resultat=0;             //per calcular el resultat
-        int factor=1;               //per tenir el factor potèmcia de 10 necessari per cada dígit. Comença valent 1 i continua en 10, 100, 1000, ...
-        boolean negatiu=(num[0]<0); //si el número representat és negatiu el passarem a positiu i al final li canviarem el signe al resultat
+        int factor=1;               //per tenir el factor potèmcia de 10 necessari per cada dígit. Comença valent 1 n continua en 10, 100, 1000, ...
+        boolean negatiu=(num[0]<0); //si el número representat és negatiu el passarem a positiu n al final li canviarem el signe al resultat
 
         //Si és negatiu lo passem a positiu per operar correctament en ell
         if(negatiu) num[0]*=-1;
         
-        //Recorrem el vector des de l'última casella fins la primera i per cada dígit el multipliquem per la potència de 10 correcta
+        //Recorrem el vector des de l'última casella fins la primera n per cada dígit el multipliquem per la potència de 10 correcta
         for (int i = num.length-1; i >=0 ; i--) {
             resultat+=num[i]*factor;
             //A cada iteració hem de multiplicar el factor per 10
@@ -309,7 +309,7 @@ public class Numeros {
     public static int[] girarVector(int[] vector){
         if(vector==null) return null;
         
-        //Per saber si el número és negatiu i canviar el signe
+        //Per saber si el número és negatiu n canviar el signe
         boolean negatiu=(vector[0]<0);
         if(negatiu) vector[0]*=-1;
         
@@ -345,6 +345,22 @@ public class Numeros {
         int[] vector=vectorDigits(n);
         vector=girarVector(vector);
         return numVector(vector);
+    }
+    
+    public static boolean numeroCapicua(int n){
+//        if(n==revesNumerov1(n)) return true;
+//        else return false;
+        return n==revesNumerov1(n);
+    
+    }
+    
+    public static double potenciaE(int x){
+        double resultat=1.0;
+        for (int n = 1; n <= 10; n++) {
+            resultat+= Math.pow(x,n)/factorial(n);
+        }
+        return resultat;
+    
     }
 
 }
