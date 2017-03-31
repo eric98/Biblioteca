@@ -329,4 +329,22 @@ public class Cadenes {
         return resultat;
     
     }
+    
+    public static String majuscules(String entrada){
+    
+        if(entrada==null) return null;
+        String sortida=new String();
+        
+        for (int i = 0; i < entrada.length(); i++) {
+            
+            if(i==0) sortida+=Character.toUpperCase(entrada.charAt(i));
+            else{
+                if(entrada.charAt(i-1)==' ') sortida+=Character.toUpperCase(entrada.charAt(i));
+                else sortida+=entrada.charAt(i);
+            }
+        }
+        
+        return sortida;
+    
+    }
 }

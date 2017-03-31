@@ -73,6 +73,9 @@ public class GUI_UF3 {
         }
     }
 
+    //Este mètode l'heu de copiar per a que funcione ja que sinó no identifica
+    //la classe Pilot (en el meu cas) com la del projecte. Així que no la crideu
+    //des del Projecte sinó que copieu el codi i modifiqueu-lo al vostre gust
     /**
      * Mètode que transforma l'array de pilots en una matriu
      * @param dades array que conté les dades a transformar
